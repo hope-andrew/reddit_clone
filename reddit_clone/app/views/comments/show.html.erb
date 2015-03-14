@@ -1,0 +1,17 @@
+<h1><%= @comment.content %></h1>
+<h1><%= @comment.post_id %></h1>
+<h1>parent <%= @comment.parent_comment_id %></h1>
+
+<h2>Reply</h2>
+
+<form action="<%=comments_url%>" method="POST" >
+  <input type="hidden"
+       name="authenticity_token"
+       value="<%= form_authenticity_token %>">
+
+  <input type="hidden" name="comment[post_id]" value="<%= @comment.post_id %>" />
+  <input type="hidden" name="comment[parent_comment_id]" value="<%= @comment.id %>" />
+  <textarea name="comment[content]"> </textarea>
+
+  <input type="submit" value="Reply">
+</form>

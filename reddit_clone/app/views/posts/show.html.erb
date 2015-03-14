@@ -1,0 +1,21 @@
+<h1>Posts#show</h1>
+<p>Find me in app/views/posts/show.html.erb</p>
+
+<%= @post.title %>
+<br>
+<%= @post.url %>
+<br>
+<%= @post.content %>
+<br>
+<% @post.subs.each do |sub| %>
+<%= sub.title%>
+<% end %>
+<br><br>
+
+<% @post.comments.where(parent_comment_id: nil).each do |comment| %>
+  <%= render partial: "comments", locals: {comment: comment}%>
+<% end %>
+
+
+
+<%= link_to "Create Comment", new_post_comment_url(@post), method: :get%>

@@ -1,0 +1,6 @@
+<%= comment.author %>
+<%= comment.content %>
+<% comment.child_comments.each do |comment| %>
+  <ul>
+  <li><%= link_to "Comment", comment_url(comment), method: :get %><br><li>
+</ul>
